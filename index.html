@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="calculator.logic.js" defer></script>
+    <script src="calculator.js" defer></script>
+  </head>
+  <body>
+    <main class="calculator" aria-label="Calculator">
+      <section class="calculator__display" aria-label="Calculator display">
+        <output
+          class="calculator__previous-operand"
+          id="previous-operand"
+          aria-live="polite"
+        ></output>
+        <output
+          class="calculator__current-operand"
+          id="current-operand"
+          aria-live="polite"
+          aria-label="Current value"
+        >0</output>
+      </section>
+
+      <section class="calculator__keys" aria-label="Calculator keys">
+        <button
+          class="calculator__key calculator__key--utility"
+          type="button"
+          data-action="clear"
+        >AC</button>
+        <button
+          class="calculator__key calculator__key--utility"
+          type="button"
+          data-action="delete"
+          aria-label="Delete last digit"
+        >DEL</button>
+        <button
+          class="calculator__key calculator__key--operator"
+          type="button"
+          data-action="operator"
+          data-value="÷"
+          aria-label="Divide"
+        >÷</button>
+        <button
+          class="calculator__key calculator__key--operator"
+          type="button"
+          data-action="operator"
+          data-value="×"
+          aria-label="Multiply"
+        >×</button>
+
+        <button class="calculator__key" type="button" data-action="number" data-value="7">7</button>
+        <button class="calculator__key" type="button" data-action="number" data-value="8">8</button>
+        <button class="calculator__key" type="button" data-action="number" data-value="9">9</button>
+        <button
+          class="calculator__key calculator__key--operator"
+          type="button"
+          data-action="operator"
+          data-value="−"
+          aria-label="Subtract"
+        >−</button>
+
+        <button class="calculator__key" type="button" data-action="number" data-value="4">4</button>
+        <button class="calculator__key" type="button" data-action="number" data-value="5">5</button>
+        <button class="calculator__key" type="button" data-action="number" data-value="6">6</button>
+        <button
+          class="calculator__key calculator__key--operator"
+          type="button"
+          data-action="operator"
+          data-value="+"
+          aria-label="Add"
+        >+</button>
+
+        <button class="calculator__key" type="button" data-action="number" data-value="1">1</button>
+        <button class="calculator__key" type="button" data-action="number" data-value="2">2</button>
+        <button class="calculator__key" type="button" data-action="number" data-value="3">3</button>
+        <button
+          class="calculator__key calculator__key--equals"
+          type="button"
+          data-action="equals"
+          aria-label="Equals"
+        >=</button>
+
+        <button class="calculator__key calculator__key--zero" type="button" data-action="number" data-value="0">0</button>
+        <button class="calculator__key" type="button" data-action="decimal" data-value=".">.</button>
+      </section>
+    </main>
+  </body>
+</html>
