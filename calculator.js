@@ -15,6 +15,11 @@ const calculator = new Calculator(previousOperandElement, currentOperandElement)
 
 const decimalButton = keys.querySelector('[data-action="decimal"]');
 
+/* fitCurrentOperand function is used to adjust the font size of the current operand display 
+ * so that it fits within its container. 
+ * It calculates the available width and compares it to the scroll width of the element. 
+ * If the scroll width exceeds the available width, it reduces the font size proportionally.*/
+
 function fitCurrentOperand() {
   const element = currentOperandElement;
   element.style.fontSize = "";
@@ -27,11 +32,15 @@ function fitCurrentOperand() {
   }
 }
 
+// updateDisplay function is used to update the display of the calculator. 
+
 function updateDisplay() {
   calculator.updateDisplay();
   fitCurrentOperand();
   decimalButton.disabled = !calculator.canAddDecimal();
 }
+
+// handleAction function is used to handle the actions triggered by button clicks or keyboard events.
 
 function handleAction(action, value) {
   switch (action) {
