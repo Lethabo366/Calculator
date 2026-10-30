@@ -1,14 +1,22 @@
+// add function is used to perform addition of two numbers.
+
 function add(a, b) {
   return a + b;
 }
+
+// subtract function is used to perform subtraction of two numbers.
 
 function subtract(a, b) {
   return a - b;
 }
 
+// multiply function is used to perform multiplication of two numbers
+
 function multiply(a, b) {
   return a * b;
 }
+
+// divide function is used to perform division of two numbers
 
 function divide(a, b) {
   return a / b;
@@ -27,6 +35,7 @@ const OPERATIONS = {
 const DIVIDE_BY_ZERO_MESSAGE = "Nice try!";
 const MAX_INPUT_DIGITS = 12;
 
+
 function operate(operator, a, b) {
   if (!Object.hasOwn(OPERATIONS, operator)) {
     throw new Error(`Unsupported operator: ${operator}`);
@@ -35,11 +44,14 @@ function operate(operator, a, b) {
 }
 
 class Calculator {
+   // Initializes the calculator and connects the display elements.
   constructor(previousOperandElement, currentOperandElement) {
     this.previousOperandElement = previousOperandElement;
     this.currentOperandElement = currentOperandElement;
     this.clear();
   }
+
+  // Resets the calculator to its initial state, clearing all operands, operations and errors.
 
   clear() {
     this.currentOperand = "0";
@@ -48,6 +60,8 @@ class Calculator {
     this.shouldResetScreen = false;
     this.error = "";
   }
+
+   // Removes the last digit from the current operand or resets the display when necessary
 
   delete() {
     if (this.error) {
@@ -71,6 +85,8 @@ class Calculator {
     }
   }
 
+  // Adds a number or decimal point to the current operand.
+
   appendNumber(number) {
     if (this.error) this.clear();
     if (this.shouldResetScreen) {
@@ -90,6 +106,8 @@ class Calculator {
     this.currentOperand += number;
   }
 
+  // Sets the mathematical operation to be performed on the operands.
+
   chooseOperation(operation) {
     if (!Object.hasOwn(OPERATIONS, operation)) return;
     if (this.error) this.clear();
@@ -103,6 +121,8 @@ class Calculator {
     this.previousOperand = this.currentOperand;
     this.shouldResetScreen = true;
   }
+
+    // Performs the selected mathematical operation using the stored operands.
 
   compute() {
     if (!this.operation || this.shouldResetScreen) return;
@@ -128,9 +148,13 @@ class Calculator {
     this.shouldResetScreen = true;
   }
 
+  // Determines whether a decimal point can be added to the current operand.
+
   canAddDecimal() {
     return this.shouldResetScreen || !this.currentOperand.includes(".");
   }
+
+  // Formats a number with thousands separators to make it easier to read.
 
   getDisplayNumber(number) {
     if (number.includes("e")) return number;
@@ -142,6 +166,8 @@ class Calculator {
       ? formattedInteger
       : `${formattedInteger}.${decimal}`;
   }
+
+  // Updates the calculator's HTML elements to display the current calculation state.
 
   updateDisplay() {
     this.currentOperandElement.textContent = this.error
